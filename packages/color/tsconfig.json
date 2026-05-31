@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    // 编译目标：使用最新 ES 语法输出（交给打包工具处理）
+    "target": "ESNext",
+    // 保留 JSX 语法，不把它编译成 JavaScript 函数调用
+    "jsx": "preserve",
+    // 引入的标准库类型
+    "lib": ["DOM", "ESNext"],
+    // 设置模块解析的基准目录，配合 paths 实现路径别名映射
+    "baseUrl": ".",
+    // 输出 ES Module（不转换 import/export）
+    "module": "ESNext",
+    // 使用更适合现代打包工具的模块解析策略
+    "moduleResolution": "bundler",
+    // 允许 import JSON 文件，并推断其类型
+    "resolveJsonModule": true,
+    // 引入全局类型声明
+    "types": ["node"],
+    // 开启最严格的一整套类型检查规则
+    "strict": true,
+    // 严格空值检查，null 和 undefined 不再自动属于任何类型
+    "strictNullChecks": true,
+    // 使用局部变量检查
+    "noUnusedLocals": true,
+    // 允许对非 ES Module（如 CommonJS 模块）使用默认导入语法，仅影响类型检查兼容性
+    "allowSyntheticDefaultImports": true,
+    // 启用 CommonJS 与 ES Module 的默认导入兼容机制，使 import 写法可以统一使用 ES Module 风格
+    "esModuleInterop": true,
+    // 强制文件路径大小写一致
+    // 防止不同操作系统（Windows/macOS/Linux）导致的大小写不一致问题
+    // 避免 CI 或生产环境构建失败
+    "forceConsistentCasingInFileNames": true
+  },
+  // 指定参与 TypeScript 类型检查的文件范围
+  "include": ["src/**/*"],
+  // 排除不参与 TypeScript 类型检查的目录
+  "exclude": ["node_modules", "dist"]
+}

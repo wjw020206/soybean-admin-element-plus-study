@@ -1,0 +1,381 @@
+/*
+1. 防止内边距和边框影响元素宽度（https://github.com/mozdevs/cssremedy/issues/4）
+2. 允许仅通过添加 `border-width` 属性为元素添加边框（https://github.com/tailwindcss/tailwindcss/pull/116）
+3. [UnoCSS]：允许使用 CSS 变量 `--un-default-border-color` 覆盖默认边框颜色
+*/
+
+*,
+::before,
+::after {
+  box-sizing: border-box; /* 1 */
+  border-width: 0; /* 2 */
+  border-style: solid; /* 2 */
+  border-color: var(--un-default-border-color, #e5e7eb); /* 2 */
+}
+
+/*
+1. 在所有浏览器中使用一致的合理行高
+2. 防止 iOS 设备在屏幕方向改变后自动调整字体大小
+3. 使用更易读的标签页大小
+4. 默认使用用户配置的 `sans` 字体系列
+*/
+
+html {
+  line-height: 1.5; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -moz-tab-size: 4; /* 3 */
+  tab-size: 4; /* 3 */
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    'Noto Sans',
+    sans-serif,
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
+    'Noto Color Emoji'; /* 4 */
+}
+
+/*
+1. 移除所有浏览器中的边距
+2. 继承 `html` 元素的行高属性，以便用户可以直接在 `html` 元素上设置行高
+*/
+
+body {
+  margin: 0; /* 1 */
+  line-height: inherit; /* 2 */
+}
+
+/*
+1. 在 Firefox 中添加正确的高度
+2. 修正 Firefox 中边框颜色的继承问题（https://bugzilla.mozilla.org/show_bug.cgi?id=190655）
+3. 确保默认情况下水平线可见
+*/
+
+hr {
+  height: 0; /* 1 */
+  color: inherit; /* 2 */
+  border-top-width: 1px; /* 3 */
+}
+
+/*
+在 Chrome、Edge 和 Safari 中添加正确的文本装饰
+*/
+
+abbr:where([title]) {
+  text-decoration: underline dotted;
+}
+
+/*
+移除标题的默认字体大小和粗细
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*
+重置链接样式，让样式变成主动添加，而不是默认有再去取消
+*/
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/*
+在 Edge 和 Safari 中添加正确的字体粗细
+*/
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/*
+1. 默认使用用户配置的 `mono` 字体系列
+2. 修正所有浏览器中 `em` 字体大小显示异常的问题
+*/
+
+code,
+kbd,
+samp,
+pre {
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/*
+在所有浏览器中添加正确的字体大小
+*/
+
+small {
+  font-size: 80%;
+}
+
+/*
+防止 `sub` 和 `sup` 元素影响所有浏览器中的行高
+*/
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/*
+1. 移除 Chrome 和 Safari 浏览器中表格内容的文本缩进（https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297）
+2. 修正所有 Chrome 和 Safari 浏览器中表格边框颜色继承的问题（https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016）
+3. 默认情况下移除表格边框之间的间隙
+*/
+
+table {
+  text-indent: 0; /* 1 */
+  border-color: inherit; /* 2 */
+  border-collapse: collapse; /* 3 */
+}
+
+/*
+1. 更改所有浏览器中的字体样式
+2. 移除 Firefox 和 Safari 中的外边距
+3. 移除所有浏览器中的默认内边距
+*/
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-feature-settings: inherit; /* 1 */
+  font-variation-settings: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  font-weight: inherit; /* 1 */
+  line-height: inherit; /* 1 */
+  color: inherit; /* 1 */
+  margin: 0; /* 2 */
+  padding: 0; /* 3 */
+}
+
+/*
+移除 Edge 和 Firefox 中的文本转换继承
+*/
+
+button,
+select {
+  text-transform: none;
+}
+
+/*
+1. 修复 iOS 和 Safari 中无法设置可点击文本样式的问题
+2. 移除默认按钮样式
+*/
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  -webkit-appearance: button; /* 1 */
+  appearance: button; /* 1 */
+  background-image: none; /* 2 */
+}
+
+/*
+所有可聚焦元素均使用现代 Firefox 聚焦样式
+*/
+
+:-moz-focusring {
+  outline: auto;
+}
+
+/*
+移除 Firefox 中额外的 `:invalid` 样式（https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737）
+*/
+
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+
+/*
+在 Chrome 和 Firefox 中添加正确的垂直对齐方式
+*/
+
+progress {
+  vertical-align: baseline;
+}
+
+/*
+修正 Safari 浏览器中增减按钮的光标样式
+*/
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/*
+1. 修正 Chrome 和 Safari 浏览器中的显示异常
+2. 修正 Safari 浏览器中的轮廓样式
+*/
+
+[type='search'] {
+  -webkit-appearance: textfield; /* 1 */
+  appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/*
+在 macOS 上的 Chrome 和 Safari 浏览器中移除内部边距
+*/
+
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/*
+1. 修复 iOS 和 Safari 中无法设置可点击文本样式的问题
+2. 将 Safari 中的字体属性更改为 “继承”
+*/
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/*
+在 Chrome 和 Safari 中添加正确的显示方式
+*/
+
+summary {
+  display: list-item;
+}
+
+/*
+移除相应元素的默认间距和边框
+*/
+
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+  margin: 0;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+ol,
+ul,
+menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+默认情况下禁止水平调整文本区域的大小
+*/
+
+textarea {
+  resize: vertical;
+}
+
+/*
+1. 重置 Firefox 中占位符的默认不透明度（https://github.com/tailwindlabs/tailwindcss/issues/3300）
+2. 将默认占位符颜色设置为用户配置的灰色 400 色
+*/
+
+input::placeholder,
+textarea::placeholder {
+  opacity: 1; /* 1 */
+  color: #9ca3af; /* 2 */
+}
+
+/*
+设置按钮的默认光标
+*/
+
+button,
+[role='button'] {
+  cursor: pointer;
+}
+
+/*
+确保禁用的按钮不会显示指针光标
+*/
+:disabled {
+  cursor: default;
+}
+
+/*
+1. 默认情况下，替换后的元素将 `display: block` 属性设置为 `display: block`（https://github.com/mozdevs/cssremedy/issues/14）
+2. 默认情况下，添加 `vertical-align: middle` 属性，使替换后的元素对齐方式更加合理（https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210）
+这可能会导致某些工具出现考虑不周的 lint 错误，但这是设计使然
+*/
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block; /* 1 */
+  vertical-align: middle; /* 2 */
+}
+
+/*
+将图片和视频限制在父元素的宽度范围内，并保持其固有的宽高比（https://github.com/mozdevs/cssremedy/issues/14）
+*/
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 默认情况下，带有 HTML hidden 属性的元素保持隐藏状态 */
+[hidden] {
+  display: none;
+}

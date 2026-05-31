@@ -1,0 +1,20 @@
+packages:
+  - "packages/*"
+
+# 在非 TTY 环境下允许 pnpm 直接重建 node_modules，贴近 pnpm 10 的行为
+confirmModulesPurge: false
+
+# 允许在 workspace 根目录直接执行安装命令
+ignoreWorkspaceRootCheck: true
+
+# 自动把 workspace 内部包链接到彼此的依赖图中
+linkWorkspacePackages: true
+
+# 将子依赖尽量提升到顶层 node_modules，兼容依赖声明不严格的旧项目
+shamefullyHoist: true
+
+# 允许这些原生依赖执行构建脚本
+allowBuilds:
+  '@parcel/watcher': true
+  esbuild: true
+  unrs-resolver: true

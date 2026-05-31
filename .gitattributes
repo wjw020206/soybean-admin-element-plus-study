@@ -1,0 +1,14 @@
+# 强制 Git 在以下类型的文件中使用统一的换行符（LF）
+"*.vue"    eol=lf
+"*.js"     eol=lf
+"*.ts"     eol=lf
+"*.jsx"    eol=lf
+"*.tsx"    eol=lf
+"*.mjs"    eol=lf
+"*.json"   eol=lf
+"*.html"   eol=lf
+"*.css"    eol=lf
+"*.scss"   eol=lf
+"*.md"     eol=lf
+"*.yaml"   eol=lf
+"*.yml"    eol=lf

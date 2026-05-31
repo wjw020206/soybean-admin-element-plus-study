@@ -1,0 +1,23 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome", // 用 Chrome 来调试
+      "request": "launch", // 启动一个新的调试会话
+      "name": "Vue Debugger",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}" // 指定源码根目录（用于断点映射）
+    },
+    {
+      "type": "node", // 用 Node.js 环境调试
+      "request": "launch",
+      "name": "TS Debugger",
+      "runtimeExecutable": "tsx", // 用 tsx 直接运行 TypeScript（不用先编译）
+      // 调试时跳过这些文件
+      "skipFiles": ["<node_internals>/**", "${workspaceFolder}/node_modules/**"],
+      "program": "${file}", // 当前打开的文件（点哪个 .ts，就跑哪个）
+      "console": "integratedTerminal", // 在 VS Code 终端里运行程序
+      "internalConsoleOptions": "neverOpen" // 不自动弹出内部调试控制台
+    }
+  ]
+}
