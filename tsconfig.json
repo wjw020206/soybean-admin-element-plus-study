@@ -4,13 +4,11 @@
     "target": "ESNext",
     // 引入的标准库类型
     "lib": ["DOM", "ESNext"],
-    // 设置模块解析的基准目录，配合 paths 实现路径别名映射
-    "baseUrl": ".",
     // 输出 ES Module（不转换 import/export）
     "module": "ESNext",
     // 使用更适合现代打包工具的模块解析策略
     "moduleResolution": "bundler",
-    // 路径别名配置（模块导入简化）
+    // 路径别名配置（相对当前 tsconfig 解析，无需 baseUrl）
     "paths": {
       "@/*": ["./src/*"],
       "~/*": ["./*"]
@@ -38,8 +36,8 @@
     // 提高构建兼容性（尤其在 Vite / React 项目中）
     "isolatedModules": true
   },
-  // 指定参与 TypeScript 类型检查的文件范围
-  "include": ["./**/*.ts", "./**/*.tsx", "./**/*.vue"],
+  // 指定应用本身参与 TypeScript 类型检查的文件范围
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "build/**/*.ts", "vite.config.ts", "uno.config.ts"],
   // 排除不参与 TypeScript 类型检查的目录
   "exclude": ["node_modules", "dist"]
 }

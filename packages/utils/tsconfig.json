@@ -6,8 +6,6 @@
     "jsx": "preserve",
     // 引入的标准库类型
     "lib": ["DOM", "ESNext"],
-    // 设置模块解析的基准目录，配合 paths 实现路径别名映射
-    "baseUrl": ".",
     // 输出 ES Module（不转换 import/export）
     "module": "ESNext",
     // 使用更适合现代打包工具的模块解析策略
