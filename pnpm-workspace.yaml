@@ -18,3 +18,6 @@ allowBuilds:
   '@parcel/watcher': true
   esbuild: true
   unrs-resolver: true
+
+minimumReleaseAgeExclude:
+  - tsx@4.22.4
