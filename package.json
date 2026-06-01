@@ -10,11 +10,19 @@
   "scripts": {
     "build": "vite build --mode prod",
     "build:test": "vite build --mode test",
+    "cleanup": "sa cleanup",
+    "commit": "sa git-commit",
+    "commit:zh": "sa git-commit -l=zh-cn",
     "dev": "vite --mode test",
     "dev:prod": "vite --mode prod",
+    "gen-route": "sa gen-route",
     "lint": "eslint . --fix",
+    "postbuild": "sa print-soybean",
+    "prepare": "simple-git-hooks",
     "preview": "vite preview",
-    "typecheck": "vue-tsc --noEmit --skipLibCheck"
+    "release": "sa release",
+    "typecheck": "vue-tsc --noEmit --skipLibCheck",
+    "update-pkg": "sa update-pkg"
   },
   "dependencies": {
     "@sa/color": "workspace:*",
