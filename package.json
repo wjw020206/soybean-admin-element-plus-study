@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@11.5.0+sha512.dbfcc4f81cf48597afd4bc391ffdf12c11f1a9fb83a395bfa6b0a2d9cc2fd8ffebafdb1ccbd529632153f793904c2615b7f09fe1a345473fd1c35845172a8eb1",
+  "packageManager": "pnpm@11.22.0+sha512.1ff870c4c6133dfd88fb2afc46dd13d47f09c9794b438c6fdb47ca98caf3bc16381ee0be93a091b8e3824cf01f889f46d7d9e20910fb0be1ab0fb5baa80dd621",
   "engines": {
     "node": "^20.19.0 || >=22.12.0"
   },
@@ -52,6 +52,7 @@
     "eslint-plugin-vue": "^10.9.1",
     "kolorist": "^1.8.0",
     "sass-embedded": "^1.100.0",
+    "simple-git-hooks": "^2.13.1",
     "tsx": "^4.22.4",
     "typescript": "^6.0.3",
     "unocss": "^66.7.0",
@@ -63,5 +64,9 @@
     "vite-plugin-vue-devtools": "^8.1.2",
     "vue-eslint-parser": "^10.4.0",
     "vue-tsc": "^3.3.3"
+  },
+  "simple-git-hooks": {
+    "commit-msg": "pnpm sa git-commit-verify",
+    "pre-commit": "pnpm typecheck && pnpm lint && git diff --exit-code"
   }
 }
