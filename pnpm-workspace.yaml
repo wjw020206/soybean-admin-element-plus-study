@@ -20,5 +20,6 @@ allowBuilds:
   simple-git-hooks: true
   unrs-resolver: true
 
+# 不受新版本发布时间限制（默认新版本发布满 1440 分钟（24 小时） 后，才会被选择安装），可以立即安装（白名单）
 minimumReleaseAgeExclude:
   - tsx@4.22.4
