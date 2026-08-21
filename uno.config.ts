@@ -12,6 +12,7 @@ export default defineConfig({
     }
   },
   theme: {
+    /** 自定义主题变量 */
     ...themeVars,
     fontSize: {
       /** 自定义图标大小 */
