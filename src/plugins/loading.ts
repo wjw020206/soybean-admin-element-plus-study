@@ -15,7 +15,7 @@ export function setupLoading() {
   const themeColor = localStg.get('themeColor') || '#646cff';
   /** 从本地存储读取是否暗黑模式 */
   const darkMode = localStg.get('darkMode') || false;
-  /** 根据主题色生成完整的色板（50~900） */
+  /** 根据主题色生成完整的色板（50~950） */
   const palette = getColorPalette(themeColor);
 
   /** 将主题色拆解为 R、G、B 三个分量，用于 CSS 自定义属性 */
