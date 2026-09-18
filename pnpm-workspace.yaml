@@ -10,6 +10,13 @@ linkWorkspacePackages: true
 # 将子依赖尽量提升到顶层 node_modules，兼容依赖声明不严格的旧项目
 shamefullyHoist: true
 
+# recast 的 TypeScript 解析器会直接加载 @babel/parser，但没有声明该依赖。
+# 固定为 Babel 7，避免它误用 vue-router 提升到顶层的 Babel 8 RC
+packageExtensions:
+  recast@0.23.9:
+    dependencies:
+      '@babel/parser': 7.29.7
+
 # 允许这些原生依赖执行构建脚本
 allowBuilds:
   '@parcel/watcher': true
