@@ -1,9 +1,6 @@
 packages:
   - "packages/*"
 
-# 在非 TTY 环境下允许 pnpm 直接重建 node_modules，贴近 pnpm 10 的行为
-confirmModulesPurge: false
-
 # 允许在 workspace 根目录直接执行安装命令
 ignoreWorkspaceRootCheck: true
 
@@ -19,6 +16,7 @@ allowBuilds:
   esbuild: true
   simple-git-hooks: true
   unrs-resolver: true
+  vue-demi: true
 
 # 不受新版本发布时间限制（默认新版本发布满 1440 分钟（24 小时） 后，才会被选择安装），可以立即安装（白名单）
 minimumReleaseAgeExclude:

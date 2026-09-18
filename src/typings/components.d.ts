@@ -11,7 +11,9 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    AppProvider: typeof import('./../components/custom/app-provider.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
+    ElWatermark: typeof import('element-plus/es')['ElWatermark']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

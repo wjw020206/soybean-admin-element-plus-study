@@ -1,6 +1,7 @@
 import type { App } from 'vue';
 import type { RouterHistory } from 'vue-router';
 import { createMemoryHistory, createRouter, createWebHashHistory, createWebHistory } from 'vue-router';
+import { createBuiltinVueRoutes } from './routes/builtin';
 
 const { VITE_ROUTER_HISTORY_MODE = 'history', VITE_BASE_URL } = import.meta.env;
 
@@ -13,7 +14,7 @@ const historyCreatorMap: Record<Env.RouterHistoryMode, (base?: string) => Router
 export const router = createRouter({
   // 路由的历史记录模式
   history: historyCreatorMap[VITE_ROUTER_HISTORY_MODE](VITE_BASE_URL),
-  routes: []
+  routes: createBuiltinVueRoutes()
 });
 
 /** 安装 Vue Router 插件 */

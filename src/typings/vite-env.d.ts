@@ -18,6 +18,13 @@ declare namespace Env {
     readonly VITE_ROUTER_HISTORY_MODE: RouterHistoryMode;
     /** iconify 图标的前缀 */
     readonly VITE_ICON_PREFIX: string;
+    /**
+     * 首页路由的 key（路由名称）
+     *
+     * 该配置仅在权限路由模式为静态模式时生效
+     * 如果使用动态路由模式，则首页路由的 key 由后端定义
+     */
+    readonly VITE_ROUTE_HOME: import('@elegant-router/types').LastLevelRouteKey;
     /** 本地 SVG 图标组件的前缀 */
     readonly VITE_ICON_LOCAL_PREFIX: string;
     /** 后端服务基本 URL */

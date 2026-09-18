@@ -5,12 +5,14 @@ import { setupUnocss } from './unocss';
 import { setupUnplugin } from './unplugin';
 import { setupHtmlPlugin } from './html';
 import { setupDevToolsPlugin } from './devtools';
+import { setupElegantRouter } from './router';
 
 /** 安装 Vite 插件 */
 export function setupVitePlugins(viteEnv: Env.ImportMeta, buildTime: string) {
   const plugins: PluginOption = [
     vue(),
     setupDevToolsPlugin(viteEnv),
+    setupElegantRouter(),
     setupUnocss(viteEnv),
     ...setupUnplugin(viteEnv),
     // 打包时在终端展示进度条
