@@ -1,23 +1,43 @@
 {
-  "version": "0.2.0",
+  "version": "0.2.0", // VS Code 调试配置文件的格式版本
   "configurations": [
+    // 可在 VS Code 调试配置列表中选择的启动配置
     {
-      "type": "chrome", // 用 Chrome 来调试
-      "request": "launch", // 启动一个新的调试会话
-      "name": "Vue Debugger",
-      "url": "http://localhost:5173",
-      "webRoot": "${workspaceFolder}" // 指定源码根目录（用于断点映射）
+      // 调试浏览器中执行的 Vue 页面代码；使用前先启动开发服务器
+      "type": "chrome", // 使用 Chrome 浏览器调试页面
+      "request": "launch", // 由调试器启动 Chrome 并打开指定页面
+      "name": "Vue Debugger", // 在 VS Code 调试配置列表中显示的名称
+      "url": "http://localhost:5173", // 要打开的开发服务器地址；需与 Vite 实际启动地址一致（当前项目配置端口为 9528）
+      "webRoot": "${workspaceFolder}" // 指定本地源码根目录，将浏览器中的源码路径映射到项目文件
     },
     {
-      "type": "node", // 用 Node.js 环境调试
-      "request": "launch",
-      "name": "TS Debugger",
-      "runtimeExecutable": "tsx", // 用 tsx 直接运行 TypeScript（不用先编译）
-      // 调试时跳过这些文件
-      "skipFiles": ["<node_internals>/**", "${workspaceFolder}/node_modules/**"],
-      "program": "${file}", // 当前打开的文件（点哪个 .ts，就跑哪个）
-      "console": "integratedTerminal", // 在 VS Code 终端里运行程序
-      "internalConsoleOptions": "neverOpen" // 不自动弹出内部调试控制台
+      // 将当前打开的 TypeScript 文件作为入口运行；函数体中的断点需要实际调用函数才能命中
+      "type": "node", // 在 Node.js 环境中调试脚本
+      "request": "launch", // 由调试器启动脚本并连接调试会话
+      "name": "TS Debugger", // 在 VS Code 调试配置列表中显示的名称
+      "runtimeExecutable": "tsx", // 使用 tsx 直接运行 TypeScript，无需预先编译；需确保命令可被找到
+      "skipFiles": ["<node_internals>/**", "${workspaceFolder}/node_modules/**"], // 单步调试时跳过 Node.js 内部代码和项目依赖
+      "program": "${file}", // 将当前活动编辑器中的文件作为入口；启动前需打开要调试的脚本
+      "console": "integratedTerminal", // 在 VS Code 集成终端中运行脚本，支持终端输入并显示日志
+      "internalConsoleOptions": "neverOpen" // 调试时不自动打开内部调试控制台
+    },
+    {
+      // 启动 Vite，调试 vite.config.ts 及其调用的配置函数（例如 createViteProxy）
+      "type": "node", // Vite 配置在 Node.js 环境中执行
+      "request": "launch", // 由调试器启动 Vite，启动前设置的断点可在加载配置时命中
+      "name": "Vite Debugger", // 在 VS Code 调试配置列表中显示的名称
+      "program": "${workspaceFolder}/node_modules/vite/bin/vite.js", // 项目本地 Vite 的命令行入口
+      "args": ["--mode", "test"], // 与 pnpm dev 一致，使用 test 模式加载环境变量
+      "cwd": "${workspaceFolder}", // 以项目根目录为工作目录，确保配置和环境变量文件正确加载
+      "console": "integratedTerminal", // 在 VS Code 集成终端中显示 Vite 日志
+      "skipFiles": ["<node_internals>/**"], // 单步调试时跳过 Node.js 内部代码
+      "sourceMaps": true, // 通过 source map 将运行代码映射回 TypeScript 源文件
+      // 指定允许解析 source map 的生成文件位置
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/**", // 允许解析项目中的 source map
+        "!**/node_modules/**", // 排除依赖中的 source map，减少无关解析
+        "${workspaceFolder}/node_modules/.vite-temp/**" // 允许 Vite 临时打包配置的 source map，使配置源码断点可定位
+      ]
     }
   ]
 }
