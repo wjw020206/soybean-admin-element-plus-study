@@ -7,11 +7,11 @@
     "esbenp.prettier-vscode",
     "kisstkondoros.vscode-gutter-preview",
     "mariusalchimavicius.json-to-ts",
-    "mhutchie.git-graph",
     "sdras.vue-vscode-snippets",
     "lokalise.i18n-ally",
     "vue.volar",
     "christian-kohler.npm-intellisense",
-    "naumovs.color-highlight"
+    "naumovs.color-highlight",
+    "the0807.git-graph-plus"
   ]
 }
