@@ -7,7 +7,7 @@
       "type": "chrome", // 使用 Chrome 浏览器调试页面
       "request": "launch", // 由调试器启动 Chrome 并打开指定页面
       "name": "Vue Debugger", // 在 VS Code 调试配置列表中显示的名称
-      "url": "http://localhost:5173", // 要打开的开发服务器地址；需与 Vite 实际启动地址一致（当前项目配置端口为 9528）
+      "url": "http://localhost:9528", // 要打开的开发服务器地址；需与 Vite 实际启动地址一致（当前项目配置端口为 9528）
       "webRoot": "${workspaceFolder}" // 指定本地源码根目录，将浏览器中的源码路径映射到项目文件
     },
     {
